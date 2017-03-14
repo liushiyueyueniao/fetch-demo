@@ -11,11 +11,7 @@
     <script src="../node_modules/whatwg-fetch/fetch.js"></script>
 
     <!-- fetch demo -->
-    <script src="../dist/util.js"></script>
-    <script src="../dist/get.js"></script>
-    <script src="../dist/post.js"></script>
-    <script src="../dist/put.js"></script>
-    <script src="../dist/delete.js"></script>
+    <script src="../dist/post.service.js"></script>
     <script>
         /*  if (supportFetch()) {
               // do code
@@ -27,22 +23,44 @@
         // or with polyfill
         window.Promise = window.Promise || TSPromise;
 
-        getPost(1);
+        var postService = new PostService();
 
-        addPost({
+        // GET
+        postService.getPost(1).then(function (post) {
+            console.log('get post', post);
+        }, function (error) {
+            console.log('error', error);
+        });
+
+        // POST
+        postService.addPost({
             userId: 1,
             title: 'My title',
             body: 'My content'
+        }).then(function (post) {
+            console.log('post added', post);
+        }, function (error) {
+            console.log('error', error);
         });
 
-        updatePost(1, {
+        // PUT
+        postService.updatePost(1, {
             id: 1,
             userId: 1,
             title: 'My new title',
             body: 'My new content'
+        }).then(function (post) {
+            console.log('post updated', post);
+        }, function (error) {
+            console.log('error', error);
         });
 
-        deletePost(1);
+        // DELETE
+        postService.deletePost(1).then(function (post) {
+            console.log('post deleted');
+        }, function (error) {
+            console.log('error', error);
+        });
     </script>
 </body>
 
