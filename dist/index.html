@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fetch</title>
+</head>
+
+<body>
+    <!-- polyfills -->
+    <script src="../node_modules/romagny13-ts-promise/dist/ts-promise.min.js"></script>
+    <script src="../node_modules/whatwg-fetch/fetch.js"></script>
+
+    <!-- fetch demo -->
+    <script src="../dist/util.js"></script>
+    <script src="../dist/get.js"></script>
+    <script src="../dist/post.js"></script>
+    <script src="../dist/put.js"></script>
+    <script src="../dist/delete.js"></script>
+    <script>
+        /*  if (supportFetch()) {
+              // do code
+          }
+          else {
+              console.log('fetch not supported => XMLHttpRequest?')
+          }*/
+
+        // or with polyfill
+        window.Promise = window.Promise || TSPromise;
+
+        getPost(1);
+
+        addPost({
+            userId: 1,
+            title: 'My title',
+            body: 'My content'
+        });
+
+        updatePost(1, {
+            id: 1,
+            userId: 1,
+            title: 'My new title',
+            body: 'My new content'
+        });
+
+        deletePost(1);
+    </script>
+</body>
+
+</html>
