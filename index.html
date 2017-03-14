@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h2>Response</h2>
+    <pre id="response"></pre>
+    <h2>Body</h2>
+    <pre id="body"></pre>
+
+    <script>
+        const responseElement = document.getElementById('response');
+        const bodyElement = document.getElementById('body');
+
+        const baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+        // GET
+        fetch(baseUrl, {
+            method: 'GET'
+        }).then((response) => {
+            return response.json();
+        }, (error) => {
+            console.log('error', error);
+        }).then((posts) => {
+            console.log('result', posts);
+        });
+        
+    </script>
+</body>
+
+</html>
